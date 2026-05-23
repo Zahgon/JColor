@@ -7,6 +7,10 @@ package com.diogonunes.jcolor;
  */
 public class Ansi {
 
+    /** Default constructor. Ansi is a static-utility class and is not meant to be instantiated. */
+    public Ansi() {
+    }
+
     private static final char ESC = 27; // Escape character used to start an ANSI code
     private static final String NEWLINE = System.getProperty("line.separator");
 
@@ -28,6 +32,8 @@ public class Ansi {
     public static final String RESET = PREFIX + Attribute.CLEAR() + POSTFIX;
 
     /**
+     * Generates the ANSI code that applies the given attributes.
+     *
      * @param attributes ANSI attributes to format a text.
      * @return The ANSI code that describes all those attributes together.
      */
@@ -49,6 +55,8 @@ public class Ansi {
     }
 
     /**
+     * Generates the ANSI code that applies the attributes contained in the given format.
+     *
      * @param attributes Object containing format attributes.
      * @return The ANSI code that describes all those attributes together.
      */
@@ -57,6 +65,8 @@ public class Ansi {
     }
 
     /**
+     * Generates the ANSI code for a terminal command.
+     *
      * @param command ANSI command to apply to terminal.
      * @return The ANSI code that describes that command.
      */
@@ -65,6 +75,8 @@ public class Ansi {
     }
 
     /**
+     * Applies a terminal command (e.g. clear screen).
+     *
      * @param command Ansi command to apply to terminal.
      * @return The formatted string, ready to be printed.
      */
@@ -73,6 +85,9 @@ public class Ansi {
     }
 
     /**
+     * Wraps each line of the text with the given raw ANSI code and a trailing reset,
+     * so the format does not spill into subsequent prints.
+     *
      * @param text     String to format.
      * @param ansiCode Ansi code to format each message's lines.
      * @return The formatted string, ready to be printed.
@@ -98,6 +113,8 @@ public class Ansi {
     }
 
     /**
+     * Wraps the text with the ANSI code that applies the given attributes.
+     *
      * @param text       String to format.
      * @param attributes ANSI attributes to format a text.
      * @return The formatted string, ready to be printed.
@@ -108,6 +125,8 @@ public class Ansi {
     }
 
     /**
+     * Wraps the text with the ANSI code defined by the given format.
+     *
      * @param text       String to format.
      * @param attributes Object containing format attributes.
      * @return The formatted string, ready to be printed.

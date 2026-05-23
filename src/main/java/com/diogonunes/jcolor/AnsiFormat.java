@@ -13,6 +13,8 @@ public class AnsiFormat {
     private final ArrayList<Attribute> _attributes = new ArrayList<>(2);
 
     /**
+     * Creates a new format that bundles the given attributes.
+     *
      * @param attributes All ANSI attributes to format a text.
      */
     public AnsiFormat(Attribute... attributes) {
@@ -20,6 +22,8 @@ public class AnsiFormat {
     }
 
     /**
+     * Wraps the given text with the ANSI code defined by this format.
+     *
      * @param text String to format.
      * @return The formatted string, ready to be printed.
      */
@@ -27,6 +31,7 @@ public class AnsiFormat {
         return Ansi.colorize(text, this.toArray());
     }
 
+    /** {@return the attributes of this format as an array} */
     protected Attribute[] toArray() {
         return _attributes.toArray(new Attribute[0]);
     }

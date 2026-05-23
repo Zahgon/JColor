@@ -16,9 +16,7 @@ public class Command {
         _code = code;
     }
 
-    /**
-     * @return Clears the terminal's text, e.g. just like the command-line `clear`.
-     */
+    /** {@return A Command that clears the terminal's text, equivalent to the command-line `clear`} */
     public static Command CLEAR_SCREEN() {
         // Covers https://github.com/dialex/JColor/issues/68
         return new Command("H\\033[2J\"");
