@@ -70,7 +70,8 @@ System.out.println("I hope you find it useful ;)");
 
 You can import this dependency through Maven or Gradle:
 
-- [JColor](https://mvnrepository.com/artifact/com.diogonunes/JColor) `v5.*` supports Java 8+, Linux, macOS, Windows* 10+
+- [JColor](https://mvnrepository.com/artifact/com.diogonunes/JColor) `v6.*` supports Java 25+ and all OS*
+- JColor `v5.*` supports Java 8+ and all OS*
 - [JCDP](https://mvnrepository.com/artifact/com.diogonunes/JCDP) `v4.*` supports Java 8+, Linux, macOS, Windows* 10+
 - JCDP `v3.*` supports Java 8+, Linux, macOS, Windows
 - JCDP `v2.*` supports Java 6+, Linux, macOS, Windows
@@ -88,7 +89,7 @@ You can import this dependency through Maven or Gradle:
 
 ### License
 
-JColor, former JCDP Copyright (C) 2011-\* [Diogo Nunes](https://www.diogonunes.com/)
+JColor (formerly JCDP) Copyright (C) since 2011 [Diogo Nunes](https://www.diogonunes.com/)
 This program is licensed under the terms of the MIT License and it comes with ABSOLUTELY NO WARRANTY. For more details check LICENSE.
 
 ### Credits
