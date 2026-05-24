@@ -1,56 +1,77 @@
 # Runbook
 
-How to do stuff
+How to do stuff.
+
+## Prerequisites
+
+- **Java 25** (JColor `v6.*` targets Java 25). Install via `brew install openjdk@25` and add to your shell PATH/`JAVA_HOME`.
+- **Maven 3.9+** (`brew install maven`).
+- **`~/.m2/settings.xml`** with a `<server id="central">` block holding your Sonatype Central Portal user token. Generate the token at https://central.sonatype.com/account.
+- **GPG secret key** present in `gpg --list-secret-keys`, with its fingerprint matching `<keyname>` in `pom.xml`. Public half published to `keyserver.ubuntu.com` and `keys.openpgp.org`.
 
 ## Release a new version
 
-- On GitHub,
-  - Create PR
-  - Wait for CI results
-  - Merge PR
-- Locally,
-  - Checkout `main`
-  - (See [Generate Javadoc](#Generate-Javadoc)
-  - Run `mvn release:clean release:prepare`
-    - Breaking changes, increase major (`X.*.*`)
-    - New features or upgraded dependencies, increase minor (`*.Y.*`)
-    - Fixing issues, increase patch (`*.*.Z`)
-  - Run `mvn release:perform`
-  - Run `git push`
-- On GitHub,
-  - Create new release
-  - Select tag created by maven
-  - Describe changes
+1. Make sure `main` is green locally:
+   - `mvn clean test`
+2. Bump the version and tag:
+   - `mvn release:clean release:prepare`
+   - When prompted for the release version, follow semver:
+     - Breaking changes → increase major (`X.*.*`)
+     - New features or dependency upgrades → minor (`*.Y.*`)
+     - Bug fixes → patch (`*.*.Z`)
+3. Build, sign, and upload to Sonatype Central Portal:
+   - `mvn release:perform`
+   - Enter your GPG passphrase when prompted.
+4. Approve the upload on Central Portal:
+   - Open https://central.sonatype.com/publishing/deployments
+   - Find the deployment matching the version. It should be in state `VALIDATED`.
+   - Review the file list and signatures, then click **Publish**.
+   - The artifact lands on `repo.maven.apache.org` ~10–30 minutes later.
+   - (Once you trust the flow, you can flip `autoPublish` to `true` in `pom.xml` to skip the manual click.)
+5. Push tags and the bump commits:
+   - `git push --follow-tags`
+6. Regenerate and commit the published Javadoc (see [Generate Javadoc](#generate-javadoc)).
+7. On GitHub, draft a release at https://github.com/dialex/JColor/releases:
+   - Select the tag created by `release:prepare`.
+   - Describe the changes (highlight breaking changes if any).
 
 ## Generate Javadoc
 
+The site at https://dialex.github.io/JColor/ is served from the `docs/` folder on `main`. Refresh it after each release.
+
 ```sh
-jenv shell 18
 ./.github/update-javadoc.sh
-jenv shell 1.8
-git add .
-git commit -m "doc: update javadoc to latest version"
+git add docs
+git commit -m "doc: update javadoc to vX.Y.Z"
+git push
 ```
 
-- Locally,
-  - If after you prepared a new release...
-    - Copy the contents of folder `target/apidocs`
-  - If not...
-    - Run `mvn javadoc:javadoc` to generate docs
-    - Copy the contents of folder `target/site/apidocs/`
-  - Delete the contents of folder `docs`
-  - Paste your clipboard inside that folder
-  - Run `git add .; git commit -m "doc: update to version X.Y.Z"`
+The script runs `mvn javadoc:javadoc`, copies `target/reports/apidocs/` into `docs/`, and opens the result in a browser for visual sanity-check.
 
 ## Update dependencies
 
-- Check what is outdated: `mvn versions:display-dependency-updates`
-- Update all of them: `mvn versions:use-latest-releases`
-- Check that tests still pass: `mvn test`
+- Check what is outdated: `mvn versions:display-dependency-updates versions:display-plugin-updates`
+- Bump individual entries in `pom.xml` (avoid `versions:use-latest-releases` — it can pick incompatible pre-releases).
+- Re-run the updates command — some plugin upgrades unlock further upgrades that were gated by the previous Maven floor.
+- Confirm tests still pass: `mvn clean test`.
 
-## Generate GPG
+## Generate a new GPG signing key
 
-- `gpg --gen-key`
-- `gpg --list-keys`
-- `gpg -ab README.md` (you can delete the generated file, it's just to test the key)
-- `gpg --keyserver keyserver.ubuntu.com --send-keys <PUBKEY>`
+Only needed if the existing key was lost, expired, or compromised.
+
+1. Create the key:
+   - `gpg --full-generate-key`
+   - Pick RSA + RSA, 4096 bits, 2-year expiry (or no expiry), real name, an email tied to your public identity.
+2. Find the new fingerprint:
+   - `gpg --list-secret-keys --keyid-format=long` — copy the 40-char hex under `sec`.
+3. Publish the public half:
+   - `gpg --keyserver keyserver.ubuntu.com --send-keys <FINGERPRINT>`
+   - `gpg --keyserver keys.openpgp.org --send-keys <FINGERPRINT>`
+4. Update `<keyname>` in `pom.xml` with the new fingerprint.
+5. Back up the secret key, ownertrust, and a revocation cert:
+   - `gpg --armor --export-secret-keys <FINGERPRINT> > jcolor-secret.asc`
+   - `gpg --export-ownertrust > jcolor-trust.txt`
+   - `gpg --gen-revoke <FINGERPRINT> > jcolor-revocation.asc`
+   - Store all three (plus the passphrase) in a password manager. Delete the local files afterwards.
+6. Smoke-test signing locally before a release:
+   - `mvn clean verify` — confirm `target/*.asc` files are produced for the jar, sources jar, javadoc jar, and pom.
