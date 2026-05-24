@@ -116,7 +116,7 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <keyname>70AC2DCF410F446BD81C82D603AEFF59C2E5C034</keyname>
+                            <keyname>6F99A06A49BD5889881033A428AA4FB5D93FAD9B</keyname>
                             <!-- Prevent `gpg` from using pinentry programs -->
                             <gpgArguments>
                                 <arg>--pinentry-mode</arg>
