@@ -15,7 +15,6 @@ class SimpleAttribute extends Attribute {
 
     @Override
     public String toString() {
-        return _code;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

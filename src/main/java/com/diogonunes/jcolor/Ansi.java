@@ -7,25 +7,32 @@ package com.diogonunes.jcolor;
  */
 public class Ansi {
 
-    /** Default constructor. Ansi is a static-utility class and is not meant to be instantiated. */
+    /**
+     * Default constructor. Ansi is a static-utility class and is not meant to be instantiated.
+     */
     public Ansi() {
     }
 
-    private static final char ESC = 27; // Escape character used to start an ANSI code
+    // Escape character used to start an ANSI code
+    private static final char ESC = 27;
+
     private static final String NEWLINE = System.getProperty("line.separator");
 
     /**
      * Every Ansi escape code begins with this PREFIX.
      */
     public static final String PREFIX = ESC + "[";
+
     /**
      * Two options must be separated by this SEPARATOR.
      */
     public static final String SEPARATOR = ";";
+
     /**
      * Every Ansi escape code must end with this POSTFIX.
      */
     public static final String POSTFIX = "m";
+
     /**
      * Shorthand for the Ansi code that resets to the terminal's default format.
      */
@@ -38,20 +45,7 @@ public class Ansi {
      * @return The ANSI code that describes all those attributes together.
      */
     public static String generateCode(Attribute... attributes) {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append(PREFIX);
-        for (Object option : attributes) {
-            String code = option.toString();
-            if (code.equals(""))
-                continue;
-            builder.append(code);
-            builder.append(SEPARATOR);
-        }
-        builder.append(POSTFIX);
-
-        // because code must not end with SEPARATOR
-        return builder.toString().replace(SEPARATOR + POSTFIX, POSTFIX);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -61,7 +55,7 @@ public class Ansi {
      * @return The ANSI code that describes all those attributes together.
      */
     public static String generateCode(AnsiFormat attributes) {
-        return generateCode(attributes.toArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -71,7 +65,7 @@ public class Ansi {
      * @return The ANSI code that describes that command.
      */
     public static String generateCode(Command command) {
-        return PREFIX + command;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -81,7 +75,7 @@ public class Ansi {
      * @return The formatted string, ready to be printed.
      */
     public static String colorize(Command command) {
-        return generateCode(command);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -93,23 +87,7 @@ public class Ansi {
      * @return The formatted string, ready to be printed.
      */
     public static String colorize(String text, String ansiCode) {
-        StringBuilder output = new StringBuilder();
-
-        /*
-         * Every formatted line should:
-         * 1) start with a code that sets the format
-         * 2) end with a code that resets the format
-         * This prevents "spilling" the format to other independent prints, which
-         * is noticeable when the background is colored.
-         */
-
-        output.append(ansiCode);
-        // Each line needs to end the current format (RESET) and start it on the next line.
-        // This avoids spilling, ie. a long line without text but formatted background
-        String enclosedFormatting = text.replace(NEWLINE, RESET + NEWLINE + ansiCode);
-        output.append(enclosedFormatting);
-        output.append(RESET);
-        return output.toString();
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -120,8 +98,7 @@ public class Ansi {
      * @return The formatted string, ready to be printed.
      */
     public static String colorize(String text, Attribute... attributes) {
-        String ansiCode = generateCode(attributes);
-        return colorize(text, ansiCode);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -132,7 +109,7 @@ public class Ansi {
      * @return The formatted string, ready to be printed.
      */
     public static String colorize(String text, AnsiFormat attributes) {
-        return colorize(text, attributes.toArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -143,7 +120,6 @@ public class Ansi {
      * @return The formatted string, ready to be printed.
      */
     public static String makeItFabulous(String text, Attribute... attributes) {
-        return colorize(text, attributes);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

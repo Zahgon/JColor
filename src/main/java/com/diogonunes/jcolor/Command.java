@@ -16,14 +16,15 @@ public class Command {
         _code = code;
     }
 
-    /** {@return A Command that clears the terminal's text, equivalent to the command-line `clear`} */
+    /**
+     * {@return A Command that clears the terminal's text, equivalent to the command-line `clear`}
+     */
     public static Command CLEAR_SCREEN() {
-        // Covers https://github.com/dialex/JColor/issues/68
-        return new Command("H\\033[2J\"");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     @Override
     public String toString() {
-        return _code;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

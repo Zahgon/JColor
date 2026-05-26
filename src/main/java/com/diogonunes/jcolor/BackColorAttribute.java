@@ -18,10 +18,6 @@ class BackColorAttribute extends ColorAttribute {
 
     @Override
     protected String getColorAnsiPrefix() {
-        String ANSI_8BIT_COLOR_PREFIX = "48;5;";
-        String ANSI_TRUE_COLOR_PREFIX = "48;2;";
-
-        return isTrueColor() ? ANSI_TRUE_COLOR_PREFIX : ANSI_8BIT_COLOR_PREFIX;
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
-
 }

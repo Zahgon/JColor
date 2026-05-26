@@ -46,3 +46,8 @@ out/
 ## gitignore for generated files
 
 test_output/
+
+.aider*
+logs/
+.commit0_scripts/
+.github/workflows/

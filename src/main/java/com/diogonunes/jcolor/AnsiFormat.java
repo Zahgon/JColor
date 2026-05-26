@@ -28,11 +28,13 @@ public class AnsiFormat {
      * @return The formatted string, ready to be printed.
      */
     public String format(String text) {
-        return Ansi.colorize(text, this.toArray());
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return the attributes of this format as an array} */
+    /**
+     * {@return the attributes of this format as an array}
+     */
     protected Attribute[] toArray() {
-        return _attributes.toArray(new Attribute[0]);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }

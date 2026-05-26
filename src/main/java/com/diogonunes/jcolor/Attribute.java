@@ -7,266 +7,360 @@ package com.diogonunes.jcolor;
  */
 public abstract class Attribute {
 
-    /** Default constructor for subclasses. */
+    /**
+     * Default constructor for subclasses.
+     */
     protected Attribute() {
     }
 
-    /** {@return the Attribute's ANSI escape code} */
+    /**
+     * {@return the Attribute's ANSI escape code}
+     */
     @Override
     public abstract String toString();
 
     // Effects
-
-    /** {@return An Attribute that applies no formatting} */
+    /**
+     * {@return An Attribute that applies no formatting}
+     */
     public static Attribute NONE() {
-        return new SimpleAttribute("");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that clears any format, restoring the terminal's default} */
+    /**
+     * {@return An Attribute that clears any format, restoring the terminal's default}
+     */
     public static Attribute CLEAR() {
-        return new SimpleAttribute("0");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that makes text bold} */
+    /**
+     * {@return An Attribute that makes text bold}
+     */
     public static Attribute BOLD() {
-        return new SimpleAttribute("1");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that makes text bold (alias of {@link #BOLD()})} */
+    /**
+     * {@return An Attribute that makes text bold (alias of {@link #BOLD()})}
+     */
     public static Attribute SATURATED() {
-        return new SimpleAttribute("1");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that dims the text} */
+    /**
+     * {@return An Attribute that dims the text}
+     */
     public static Attribute DIM() {
-        return new SimpleAttribute("2");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that dims the text (alias of {@link #DIM()})} */
+    /**
+     * {@return An Attribute that dims the text (alias of {@link #DIM()})}
+     */
     public static Attribute DESATURATED() {
-        return new SimpleAttribute("2");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that makes text italic} */
+    /**
+     * {@return An Attribute that makes text italic}
+     */
     public static Attribute ITALIC() {
-        return new SimpleAttribute("3");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that underlines the text} */
+    /**
+     * {@return An Attribute that underlines the text}
+     */
     public static Attribute UNDERLINE() {
-        return new SimpleAttribute("4");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that makes the text blink slowly} */
+    /**
+     * {@return An Attribute that makes the text blink slowly}
+     */
     public static Attribute SLOW_BLINK() {
-        return new SimpleAttribute("5");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that makes the text blink rapidly} */
+    /**
+     * {@return An Attribute that makes the text blink rapidly}
+     */
     public static Attribute RAPID_BLINK() {
-        return new SimpleAttribute("6");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that swaps foreground and background colors} */
+    /**
+     * {@return An Attribute that swaps foreground and background colors}
+     */
     public static Attribute REVERSE() {
-        return new SimpleAttribute("7");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that hides the text (same color as background)} */
+    /**
+     * {@return An Attribute that hides the text (same color as background)}
+     */
     public static Attribute HIDDEN() {
-        return new SimpleAttribute("8");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that strikes through the text} */
+    /**
+     * {@return An Attribute that strikes through the text}
+     */
     public static Attribute STRIKETHROUGH() {
-        return new SimpleAttribute("9");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that draws a frame around the text} */
+    /**
+     * {@return An Attribute that draws a frame around the text}
+     */
     public static Attribute FRAMED() {
-        return new SimpleAttribute("51");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that encircles the text} */
+    /**
+     * {@return An Attribute that encircles the text}
+     */
     public static Attribute ENCIRCLED() {
-        return new SimpleAttribute("52");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that draws a line above the text} */
+    /**
+     * {@return An Attribute that draws a line above the text}
+     */
     public static Attribute OVERLINED() {
-        return new SimpleAttribute("53");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Colors (foreground)
-
-    /** {@return An Attribute that paints the text black} */
+    /**
+     * {@return An Attribute that paints the text black}
+     */
     public static Attribute BLACK_TEXT() {
-        return new SimpleAttribute("30");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text red} */
+    /**
+     * {@return An Attribute that paints the text red}
+     */
     public static Attribute RED_TEXT() {
-        return new SimpleAttribute("31");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text green} */
+    /**
+     * {@return An Attribute that paints the text green}
+     */
     public static Attribute GREEN_TEXT() {
-        return new SimpleAttribute("32");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text yellow} */
+    /**
+     * {@return An Attribute that paints the text yellow}
+     */
     public static Attribute YELLOW_TEXT() {
-        return new SimpleAttribute("33");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text blue} */
+    /**
+     * {@return An Attribute that paints the text blue}
+     */
     public static Attribute BLUE_TEXT() {
-        return new SimpleAttribute("34");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text magenta} */
+    /**
+     * {@return An Attribute that paints the text magenta}
+     */
     public static Attribute MAGENTA_TEXT() {
-        return new SimpleAttribute("35");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text cyan} */
+    /**
+     * {@return An Attribute that paints the text cyan}
+     */
     public static Attribute CYAN_TEXT() {
-        return new SimpleAttribute("36");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text white} */
+    /**
+     * {@return An Attribute that paints the text white}
+     */
     public static Attribute WHITE_TEXT() {
-        return new SimpleAttribute("37");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Colors (background)
-
-    /** {@return An Attribute that paints the background black} */
+    /**
+     * {@return An Attribute that paints the background black}
+     */
     public static Attribute BLACK_BACK() {
-        return new SimpleAttribute("40");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background red} */
+    /**
+     * {@return An Attribute that paints the background red}
+     */
     public static Attribute RED_BACK() {
-        return new SimpleAttribute("41");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background green} */
+    /**
+     * {@return An Attribute that paints the background green}
+     */
     public static Attribute GREEN_BACK() {
-        return new SimpleAttribute("42");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background yellow} */
+    /**
+     * {@return An Attribute that paints the background yellow}
+     */
     public static Attribute YELLOW_BACK() {
-        return new SimpleAttribute("43");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background blue} */
+    /**
+     * {@return An Attribute that paints the background blue}
+     */
     public static Attribute BLUE_BACK() {
-        return new SimpleAttribute("44");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background magenta} */
+    /**
+     * {@return An Attribute that paints the background magenta}
+     */
     public static Attribute MAGENTA_BACK() {
-        return new SimpleAttribute("45");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background cyan} */
+    /**
+     * {@return An Attribute that paints the background cyan}
+     */
     public static Attribute CYAN_BACK() {
-        return new SimpleAttribute("46");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background white} */
+    /**
+     * {@return An Attribute that paints the background white}
+     */
     public static Attribute WHITE_BACK() {
-        return new SimpleAttribute("47");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Bright colors (foreground)
-
-    /** {@return An Attribute that paints the text bright black} */
+    /**
+     * {@return An Attribute that paints the text bright black}
+     */
     public static Attribute BRIGHT_BLACK_TEXT() {
-        return new SimpleAttribute("90");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright red} */
+    /**
+     * {@return An Attribute that paints the text bright red}
+     */
     public static Attribute BRIGHT_RED_TEXT() {
-        return new SimpleAttribute("91");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright green} */
+    /**
+     * {@return An Attribute that paints the text bright green}
+     */
     public static Attribute BRIGHT_GREEN_TEXT() {
-        return new SimpleAttribute("92");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright yellow} */
+    /**
+     * {@return An Attribute that paints the text bright yellow}
+     */
     public static Attribute BRIGHT_YELLOW_TEXT() {
-        return new SimpleAttribute("93");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright blue} */
+    /**
+     * {@return An Attribute that paints the text bright blue}
+     */
     public static Attribute BRIGHT_BLUE_TEXT() {
-        return new SimpleAttribute("94");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright magenta} */
+    /**
+     * {@return An Attribute that paints the text bright magenta}
+     */
     public static Attribute BRIGHT_MAGENTA_TEXT() {
-        return new SimpleAttribute("95");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright cyan} */
+    /**
+     * {@return An Attribute that paints the text bright cyan}
+     */
     public static Attribute BRIGHT_CYAN_TEXT() {
-        return new SimpleAttribute("96");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the text bright white} */
+    /**
+     * {@return An Attribute that paints the text bright white}
+     */
     public static Attribute BRIGHT_WHITE_TEXT() {
-        return new SimpleAttribute("97");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Bright colors (background)
-
-    /** {@return An Attribute that paints the background bright black} */
+    /**
+     * {@return An Attribute that paints the background bright black}
+     */
     public static Attribute BRIGHT_BLACK_BACK() {
-        return new SimpleAttribute("100");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright red} */
+    /**
+     * {@return An Attribute that paints the background bright red}
+     */
     public static Attribute BRIGHT_RED_BACK() {
-        return new SimpleAttribute("101");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright green} */
+    /**
+     * {@return An Attribute that paints the background bright green}
+     */
     public static Attribute BRIGHT_GREEN_BACK() {
-        return new SimpleAttribute("102");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright yellow} */
+    /**
+     * {@return An Attribute that paints the background bright yellow}
+     */
     public static Attribute BRIGHT_YELLOW_BACK() {
-        return new SimpleAttribute("103");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright blue} */
+    /**
+     * {@return An Attribute that paints the background bright blue}
+     */
     public static Attribute BRIGHT_BLUE_BACK() {
-        return new SimpleAttribute("104");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright magenta} */
+    /**
+     * {@return An Attribute that paints the background bright magenta}
+     */
     public static Attribute BRIGHT_MAGENTA_BACK() {
-        return new SimpleAttribute("105");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright cyan} */
+    /**
+     * {@return An Attribute that paints the background bright cyan}
+     */
     public static Attribute BRIGHT_CYAN_BACK() {
-        return new SimpleAttribute("106");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
-    /** {@return An Attribute that paints the background bright white} */
+    /**
+     * {@return An Attribute that paints the background bright white}
+     */
     public static Attribute BRIGHT_WHITE_BACK() {
-        return new SimpleAttribute("107");
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     // Complex colors
-
     /**
      * Paints the text using an 8-bit color from the 256-color palette.
      *
@@ -274,7 +368,7 @@ public abstract class Attribute {
      * @return An Attribute that represents a foreground with an 8-bit color.
      */
     public static Attribute TEXT_COLOR(int colorNumber) {
-        return new TextColorAttribute(colorNumber);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -286,7 +380,7 @@ public abstract class Attribute {
      * @return An Attribute that represents a foreground with a true color.
      */
     public static Attribute TEXT_COLOR(int r, int g, int b) {
-        return new TextColorAttribute(r, g, b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -296,7 +390,7 @@ public abstract class Attribute {
      * @return An Attribute that represents a background with an 8-bit color.
      */
     public static Attribute BACK_COLOR(int colorNumber) {
-        return new BackColorAttribute(colorNumber);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 
     /**
@@ -308,7 +402,6 @@ public abstract class Attribute {
      * @return An Attribute that represents a background with a true color.
      */
     public static Attribute BACK_COLOR(int r, int g, int b) {
-        return new BackColorAttribute(r, g, b);
+        throw new UnsupportedOperationException("STUB: not implemented");
     }
 }
-
